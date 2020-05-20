@@ -1,0 +1,46 @@
+npm i apollo-angular apollo-angular-link-http apollo-cache-inmemory apollo-link apollo-link-ws apollo-utilities graphql graphql-tag apollo-client subscriptions-transport-ws
+
+#https://alligator.io/angular/graphql-subscriptions/ 
+
+# add android
+ionic cordova platform add android
+
+# remove android
+ionic cordova platform rm android
+
+# add iOS (only for macOS)
+ionic cordova platform add ios
+
+# remove iOS (only for macOS)
+ionic cordova platform rm ios
+
+
+# icons and splash for all the platforms
+ionic cordova resources
+
+# icons only
+ionic cordova resources -i
+
+# splash only
+ionic cordova resources -s
+
+# for android only
+ionic cordova resources android
+
+# for ios only
+ionic cordova resources ios
+
+# for Android
+ionic cordova build android --prod --release
+
+# The above command will generate the app-release-unsigned.apk into
+# /platforms/android/app/build/outputs/apk/release directory.
+
+keytool -genkey -v -keystore <app_name>.keystore -alias <app_name> -keyalg RSA -keysize 2048 -validity 10000
+# Generates the <app_name>.keystore file into the same directory 
+# where the above command runs.
+
+
+#To sign the Release APK by the generated keystore file, use below command
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore <app_name>.keystore app-release-unsigned.apk <app_name>
+

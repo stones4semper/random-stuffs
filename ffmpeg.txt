@@ -1,0 +1,1 @@
+http://ksloan.net/watermarking-videos-from-the-command-line-using-ffmpeg-filters/

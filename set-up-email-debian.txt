@@ -1,0 +1,15 @@
+
+# for email setup link 
+https://www.tecmint.com/install-postfix-mail-server-with-webmail-in-debian/
+https://upcloud.com/community/tutorials/secure-postfix-using-lets-encrypt/
+
+nano /etc/dovecot/conf.d/10-ssl.conf
+	ssl_cert = </etc/letsencrypt/live/mail.meta5fx.com/fullchain.pem
+	ssl_key = </etc/letsencrypt/live/mail.meta5fx.com/privkey.pem
+	
+  
+sudo postconf -e 'smtpd_tls_cert_file = /etc/letsencrypt/live/mail.meta5fx.com/fullchain.pem'
+sudo postconf -e 'smtpd_tls_key_file = /etc/letsencrypt/live/mail.meta5fx.com/privkey.pem'
+
+ssl_cert = </etc/letsencrypt/live/mail.meta5fx.com/fullchain.pem
+ssl_key = </etc/letsencrypt/live/mail.meta5fx.com/privkey.pem

@@ -1,0 +1,53 @@
+apt update -y && apt upgrade -y && apt install apache2 php php-mysql php-gd php-phpseclib php-mysqli php-gettext php-cgi libapache2-mod-php php-bcmath php-bz2 php-curl php-dev php-enchant php-gd php-gmp php-imap php-interbase php-intl php-json php-ldap php-mbstring php-mysql php-odbc php-pgsql php-pspell php-readline php-recode php-snmp php-soap php-sqlite3 php-sybase php-tidy php-xml php-xmlrpc php-zip wget mariadb-server -y && sudo mysql_secure_installation
+sudo apt-get install certbot python-certbot-apache
+sudo certbot --apache
+
+
+# for file permission
+
+sudo usermod -a -G www-data root
+sudo chgrp -R www-data /var/www
+sudo chmod -R g+w /var/www
+
+# for php my admin
+https://computingforgeeks.com/install-phpmyadmin-with-apache-on-debian-10-buster/
+
+#create new mysql user
+mysql -u root -p
+CREATE USER 'eloike'@'localhost' IDENTIFIED BY '98499849';
+GRANT ALL PRIVILEGES ON *.* TO 'eloike'@'localhost';
+FLUSH PRIVILEGES;
+quit;
+
+
+# for email setup link 
+https://www.tecmint.com/install-postfix-mail-server-with-webmail-in-debian/
+https://upcloud.com/community/tutorials/secure-postfix-using-lets-encrypt/
+
+nano /etc/dovecot/conf.d/10-ssl.conf
+	ssl_cert = </etc/letsencrypt/live/yourdomain.com/fullchain.pem
+	ssl_key = </etc/letsencrypt/live/yourdomain.com/privkey.pem
+	
+  
+sudo postconf -e 'smtpd_tls_cert_file = /etc/letsencrypt/live/mail.meta5fx.com/fullchain.pem'
+sudo postconf -e 'smtpd_tls_key_file = /etc/letsencrypt/live/mail.meta5fx.com/privkey.pem'
+
+ssl_cert = </etc/letsencrypt/live/mail.meta5fx.com/fullchain.pem
+ssl_key = </etc/letsencrypt/live/mail.meta5fx.com/privkey.pem
+
+http://vps295253.vps.ovh.ca/
+http://130.ip-167-114-2.net/
+
+
+nc localhost 143
+x1 LOGIN support Dobank@1
+x2 LIST "" "*"
+x3 SELECT Inbox
+x4 LOGOUT
+
+
+nano /etc/nginx/conf.d/130.ip-167-114-2.net.conf
+
+Dobank@1
+
+ apt remove *postfix* && apt remove *dovecot* && apt purge *postfix* && apt purge *dovecot*

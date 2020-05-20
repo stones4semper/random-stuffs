@@ -1,0 +1,17 @@
+#install node in debian
+
+curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh -o install_nvm.sh
+
+nano install_nvm.sh
+
+bash install_nvm.sh
+
+source ~/.profile
+
+nvm ls-remote
+
+nvm install 14.3.0
+
+nvm use 14.3.0
+
+npm i -g cordova @ionic/cli nodemon yarn @vue/cli @vue/cli-service-global @angular/cli create-react-app firebase-tools
