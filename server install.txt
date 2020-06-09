@@ -30,6 +30,8 @@ GRANT ALL PRIVILEGES ON *.* TO 'eloike'@'localhost';
 FLUSH PRIVILEGES;
 quit;
 
+#renew ssl certificate
+sudo certbot renew --dry-run
 
 # for email setup link 
 https://www.tecmint.com/install-postfix-mail-server-with-webmail-in-debian/

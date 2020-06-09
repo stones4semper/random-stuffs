@@ -1,0 +1,42 @@
+
+sudo mkdir -p /var/www/errandsglobal.com/public_html
+
+nano /var/www/errandsglobal.com/public_html/index.html
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to errandsglobal.com</title>
+  </head>
+  <body>
+    <h1>Success! errandsglobal.com home page!</h1>
+  </body>
+</html>
+
+
+sudo chown -R www-data: /var/www/errandsglobal.com
+
+nano /etc/apache2/sites-available/errandsglobal.com.conf
+
+<VirtualHost *:80>
+    ServerName errandsglobal.com
+    ServerAlias www.errandsglobal.com
+    ServerAdmin webmaster@errandsglobal.com
+    DocumentRoot /var/www/errandsglobal.com/public_html
+
+    <Directory /var/www/errandsglobal.com/public_html>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/errandsglobal.com-error.log
+    CustomLog ${APACHE_LOG_DIR}/errandsglobal.com-access.log combined
+</VirtualHost>
+
+sudo a2ensite errandsglobal.com
+
+sudo apachectl configtest
+
+sudo systemctl restart apache2
