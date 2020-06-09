@@ -1,4 +1,4 @@
-npm i apollo-angular apollo-angular-link-http apollo-cache-inmemory apollo-link apollo-link-ws apollo-utilities graphql graphql-tag apollo-client subscriptions-transport-ws
+npm i apollo-angular apollo-angular-link-http apollo-link-error apollo-cache-inmemory apollo-link apollo-link-ws apollo-utilities graphql graphql-tag apollo-client subscriptions-transport-ws
 
 #https://alligator.io/angular/graphql-subscriptions/ 
 

@@ -3,13 +3,18 @@
 https://www.tecmint.com/install-postfix-mail-server-with-webmail-in-debian/
 https://upcloud.com/community/tutorials/secure-postfix-using-lets-encrypt/
 
+sudo certbot certonly --standalone -d mail.errandsglobal.com
+
 nano /etc/dovecot/conf.d/10-ssl.conf
-	ssl_cert = </etc/letsencrypt/live/mail.meta5fx.com/fullchain.pem
-	ssl_key = </etc/letsencrypt/live/mail.meta5fx.com/privkey.pem
+	ssl_cert = </etc/letsencrypt/live/mail.errandsglobal.com/fullchain.pem
+	ssl_key = </etc/letsencrypt/live/mail.errandsglobal.com/privkey.pem
 	
   
-sudo postconf -e 'smtpd_tls_cert_file = /etc/letsencrypt/live/mail.meta5fx.com/fullchain.pem'
-sudo postconf -e 'smtpd_tls_key_file = /etc/letsencrypt/live/mail.meta5fx.com/privkey.pem'
+sudo postconf -e 'smtpd_tls_cert_file = /etc/letsencrypt/live/mail.errandsglobal.com/fullchain.pem'
+sudo postconf -e 'smtpd_tls_key_file = /etc/letsencrypt/live/mail.errandsglobal.com/privkey.pem'
 
-ssl_cert = </etc/letsencrypt/live/mail.meta5fx.com/fullchain.pem
-ssl_key = </etc/letsencrypt/live/mail.meta5fx.com/privkey.pem
+ssl_cert = </etc/letsencrypt/live/mail.errandsglobal.com/fullchain.pem
+ssl_key = </etc/letsencrypt/live/mail.errandsglobal.com/privkey.pem
+
+
+echo "45.79.202.126 errandsglobal.com mail.errandsglobal.com" >> /etc/hosts

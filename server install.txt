@@ -1,7 +1,10 @@
 apt update -y && apt upgrade -y && apt install apache2 php php-mysql php-gd php-phpseclib php-mysqli php-gettext php-cgi libapache2-mod-php php-bcmath php-bz2 php-curl php-dev php-enchant php-gd php-gmp php-imap php-interbase php-intl php-json php-ldap php-mbstring php-mysql php-odbc php-pgsql php-pspell php-readline php-recode php-snmp php-soap php-sqlite3 php-sybase php-tidy php-xml php-xmlrpc php-zip wget mariadb-server -y && sudo mysql_secure_installation
-sudo apt-get install certbot python-certbot-apache
-sudo certbot --apache
+sudo apt-get install certbot python-certbot-apache 
+certbot --apache -d vps295253.vps.ovh.ca
+ #for my ovh vps
 
+apt update -y && apt upgrade -y && apt install curl git tree python3-venv apache2 nodejs npm php php-mysql php-gd php-phpseclib php-mysqli php-gettext php-cgi libapache2-mod-php php-bcmath php-bz2 php-curl php-dev php-enchant php-gd php-gmp php-imap php-interbase php-intl php-json php-ldap php-mbstring php-mysql php-odbc php-pgsql php-pspell php-readline php-recode php-snmp php-soap php-sqlite3 php-sybase php-tidy php-xml php-xmlrpc php-zip wget mariadb-server -y  certbot python-certbot-apache -y && usermod -a -G www-data root && chgrp -R www-data /var/www && chmod -R g+w /var/www && curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh && bash nodesource_setup.sh && apt install nodejs && apt install build-essential && npm i -g cordova @ionic/cli nodemon yarn vue @vue/cli @vue/cli-service-global @angular/cli create-react-app firebase-tools forever && mkdir Django && cd Django && python3 -m venv venv && source venv/bin/activate && pip install Django && certbot --apache -d vps295253.vps.ovh.ca && mysql_secure_installation && usermod -a -G www-data root && chgrp -R www-data /var/www && chmod -R g+w /var/www && apt autoremove
+ 
 
 # for file permission
 
@@ -9,7 +12,15 @@ sudo usermod -a -G www-data root
 sudo chgrp -R www-data /var/www
 sudo chmod -R g+w /var/www
 
-# for php my admin
+#Django
+apt install tree 
+apt install python3-venv
+mkdir Django && cd Django
+python3 -m venv venv
+source venv/bin/activate
+pip install Django
+
+# for phpmyadmin
 https://computingforgeeks.com/install-phpmyadmin-with-apache-on-debian-10-buster/
 
 #create new mysql user
@@ -23,6 +34,8 @@ quit;
 # for email setup link 
 https://www.tecmint.com/install-postfix-mail-server-with-webmail-in-debian/
 https://upcloud.com/community/tutorials/secure-postfix-using-lets-encrypt/
+
+sudo certbot certonly --standalone -d mail.errandsglobal.com
 
 nano /etc/dovecot/conf.d/10-ssl.conf
 	ssl_cert = </etc/letsencrypt/live/yourdomain.com/fullchain.pem

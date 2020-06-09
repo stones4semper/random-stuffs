@@ -1,0 +1,32 @@
+cordova plugin add cordova-plugin-whitelist
+
+<!-- in config.xml -->
+<widget id="helpdesk.eloike.com" version="0.1.4" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+
+ionic cordova build android --prod --release
+
+keytool -genkey -v -keystore meta5fx.jks -keyalg RSA -keysize 2048 -validity 10000 -alias meta5fx
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore keys/meta5fx.jks app/meta5fx/app-release-unsigned.apk meta5fx
+
+C:\Android\sdk\build-tools\28.0.3\zipalign.exe -v 4 app\meta5fx\app-release-unsigned.apk app\meta5fx\meta5fx.apk
+
+98499849
+
+#app bundle
+
+cd platforms/android
+
+gradlew bundle
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore keys/meta5fx.jks app/meta5fx/app.aab meta5fx
+
+C:\Android\sdk\build-tools\28.0.3\zipalign.exe -v 4 app\meta5fx\app.aab app\meta5fx\meta5fx.aab
+
+
+
+keytool -genkey -v -keystore deliverStore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias deliverStore
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore keys/deliverStore.jks app/deliverStore/app-release-unsigned.apk deliverStore
+
+C:\Android\sdk\build-tools\28.0.3\zipalign.exe -v 4 app\deliverStore\app-release-unsigned.apk app\deliverStore\deliverStore.apk
