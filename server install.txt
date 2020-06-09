@@ -51,6 +51,16 @@ ssl_key = </etc/letsencrypt/live/mail.meta5fx.com/privkey.pem
 http://vps295253.vps.ovh.ca/
 http://130.ip-167-114-2.net/
 
+adduser support
+nc localhost 25
+ehlo localhost
+mail from: root
+rcpt to: support
+data
+subject: test
+Mail body
+.
+quit
 
 nc localhost 143
 x1 LOGIN support Dobank@1
